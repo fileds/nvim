@@ -1,5 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = 'master',
     lazy = false,
     build = ":TSUpdate",
     config = function()
@@ -24,8 +25,10 @@ return {
             "vue",
             "yaml",
         }
-        ts.setup({})
-        ts.install(languages)
+        ts.setup({
+            ensure_installed = languages,
+        })
+        -- ts.install(languages)
         vim.api.nvim_create_autocmd("FileType", {
             pattern = languages,
             callback = function()
